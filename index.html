@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Disponibilidad</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-light">
+
+<div class="container py-4">
+
+    <h2 class="mb-4 text-center">Registrar No Disponibilidad</h2>
+
+    <!-- =============================
+         DATOS GENERALES
+    ============================== -->
+    <div class="card p-3 mb-4">
+        <h5>Datos personales</h5>
+
+        <div class="mb-3">
+            <label class="form-label">Código</label>
+            <input type="text" id="codigo" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" id="nombre" class="form-control">
+        </div>
+    </div>
+
+    <!-- =============================
+         SECCIONES DE DÍAS
+    ============================== -->
+
+    <div id="dias-container">
+
+        <!-- Día genérico (se repite para cada fecha) -->
+        <!-- Vamos a crear 7 bloques manualmente -->
+
+        <!-- Lunes 8/12 -->
+        <div class="card p-3 mb-3">
+            <h5 class="d-flex justify-content-between align-items-center">
+                Lunes 8/12
+                <button class="btn btn-primary btn-sm" onclick="abrirFormDia('lunes')">
+                    + Agregar no disponibilidad
+                </button>
+            </h5>
+
+            <!-- Solapa oculta -->
+            <div id="form-lunes" class="solapa p-3 border rounded bg-white mb-3 d-none">
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label">Hora desde</label>
+                        <input type="time" id="lunes-desde" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Hora hasta</label>
+                        <input type="time" id="lunes-hasta" class="form-control">
+                    </div>
+                </div>
+
+                <button class="btn btn-success btn-sm mt-2" onclick="guardarHorario('lunes')">Guardar</button>
+            </div>
+
+            <!-- Lista dinámica -->
+            <ul id="lista-lunes" class="list-group"></ul>
+        </div>
+
+        <!-- Martes 9/12 -->
+        <div class="card p-3 mb-3">
+            <h5 class="d-flex justify-content-between align-items-center">
+                Martes 9/12
+                <button class="btn btn-primary btn-sm" onclick="abrirFormDia('martes')">
+                    + Agregar no disponibilidad
+                </button>
+            </h5>
+
+            <div id="form-martes" class="solapa p-3 border rounded bg-white mb-3 d-none">
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label">Hora desde</label>
+                        <input type="time" id="martes-desde" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Hora hasta</label>
+                        <input type="time" id="martes-hasta" class="form-control">
+                    </div>
+                </div>
+
+                <button class="btn btn-success btn-sm mt-2" onclick="guardarHorario('martes')">Guardar</button>
+            </div>
+
+            <ul id="lista-martes" class="list-group"></ul>
+        </div>
+
+        <!-- Miércoles 10/12 -->
+        <div class="card p-3 mb-3">
+            <h5 class="d-flex justify-content-between align-items-center">
+                Miércoles 10/12
+                <button class="btn btn-primary btn-sm" onclick="abrirFormDia('miercoles')">
+                    + Agregar no disponibilidad
+                </button>
+            </h5>
+
+            <div id="form-miercoles" class="solapa p-3 border rounded bg-white mb-3 d-none">
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label">Hora desde</label>
+                        <input type="time" id="miercoles-desde" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Hora hasta</label>
+                        <input type="time" id="miercoles-hasta" class="form-control">
+                    </div>
+                </div>
+
+                <button class="btn btn-success btn-sm mt-2" onclick="guardarHorario('miercoles')">Guardar</button>
+            </div>
+
+            <ul id="lista-miercoles" class="list-group"></ul>
+        </div>
+
+        <!-- Jueves 11/12 -->
+        <div class="card p-3 mb-3">
+            <h5 class="d-flex justify-content-between align-items-center">
+                Jueves 11/12
+                <button class="btn btn-primary btn-sm" onclick="abrirFormDia('jueves')">
+                    + Agregar no disponibilidad
+                </button>
+            </h5>
+
+            <div id="form-jueves" class="solapa p-3 border rounded bg-white mb-3 d-none">
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label">Hora desde</label>
+                        <input type="time" id="jueves-desde" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Hora hasta</label>
+                        <input type="time" id="jueves-hasta" class="form-control">
+                    </div>
+                </div>
+
+                <button class="btn btn-success btn-sm mt-2" onclick="guardarHorario('jueves')">Guardar</button>
+            </div>
+
+            <ul id="lista-jueves" class="list-group"></ul>
+        </div>
+
+        <!-- Viernes 12/12 -->
+        <div class="card p-3 mb-3">
+            <h5 class="d-flex justify-content-between align-items-center">
+                Viernes 12/12
+                <button class="btn btn-primary btn-sm" onclick="abrirFormDia('viernes')">
+                    + Agregar no disponibilidad
+                </button>
+            </h5>
+
+            <div id="form-viernes" class="solapa p-3 border rounded bg-white mb-3 d-none">
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label">Hora desde</label>
+                        <input type="time" id="viernes-desde" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Hora hasta</label>
+                        <input type="time" id="viernes-hasta" class="form-control">
+                    </div>
+                </div>
+
+                <button class="btn btn-success btn-sm mt-2" onclick="guardarHorario('viernes')">Guardar</button>
+            </div>
+
+            <ul id="lista-viernes" class="list-group"></ul>
+        </div>
+
+        <!-- Sábado 13/12 -->
+        <div class="card p-3 mb-3">
+            <h5 class="d-flex justify-content-between align-items-center">
+                Sábado 13/12
+                <button class="btn btn-primary btn-sm" onclick="abrirFormDia('sabado')">
+                    + Agregar no disponibilidad
+                </button>
+            </h5>
+
+            <div id="form-sabado" class="solapa p-3 border rounded bg-white mb-3 d-none">
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label">Hora desde</label>
+                        <input type="time" id="sabado-desde" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Hora hasta</label>
+                        <input type="time" id="sabado-hasta" class="form-control">
+                    </div>
+                </div>
+
+                <button class="btn btn-success btn-sm mt-2" onclick="guardarHorario('sabado')">Guardar</button>
+            </div>
+
+            <ul id="lista-sabado" class="list-group"></ul>
+        </div>
+
+        <!-- Domingo 14/12 -->
+        <div class="card p-3 mb-3">
+            <h5 class="d-flex justify-content-between align-items-center">
+                Domingo 14/12
+                <button class="btn btn-primary btn-sm" onclick="abrirFormDia('domingo')">
+                    + Agregar no disponibilidad
+                </button>
+            </h5>
+
+            <div id="form-domingo" class="solapa p-3 border rounded bg-white mb-3 d-none">
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label">Hora desde</label>
+                        <input type="time" id="domingo-desde" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Hora hasta</label>
+                        <input type="time" id="domingo-hasta" class="form-control">
+                    </div>
+                </div>
+
+                <button class="btn btn-success btn-sm mt-2" onclick="guardarHorario('domingo')">Guardar</button>
+            </div>
+
+            <ul id="lista-domingo" class="list-group"></ul>
+        </div>
+
+    </div>
+
+    <!-- =============================
+         BOTÓN FINAL
+    ============================== -->
+    <div class="text-center mt-4">
+        <button class="btn btn-success btn-lg" onclick="enviarFormulario()">Enviar</button>
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Archivo de lógica -->
+<script src="main.js"></script>
+
+</body>
+</html>
