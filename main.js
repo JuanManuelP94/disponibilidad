@@ -125,8 +125,8 @@ function enviarFormulario() {
     console.log("DATOS A ENVIAR:", paquete);
 
     // FETCH para enviar al Apps Script (cuando tengas la URL la pegamos acá)
-    /*
-    fetch("TU_URL_DE_APPS_SCRIPT", {
+    
+    fetch("https://script.google.com/macros/s/AKfycbwQ3gXGEHBmxV8QLd8M17QDWVhaVEgaezt52qcOVzmEskYkgW1_dCunHaMff75LSk5UoA/exec", {
         method: "POST",
         body: JSON.stringify(paquete)
     })
@@ -135,10 +135,13 @@ function enviarFormulario() {
         if (r === "OK") {
             alert("Datos enviados correctamente!");
             location.reload();
+        } else if (r === "CODIGO_INVALIDO") {
+            alert("Código incorrecto. No se registró nada.");
         } else {
-            alert("Hubo un error: " + r);
+            alert("Error inesperado: " + r);
         }
     })
-    .catch(err => alert("Error de conexión"));
-    */
+    .catch(err => alert("No se pudo conectar con el servidor."));
+    
 }
+
