@@ -93,13 +93,13 @@ function enviarFormulario() {
 
     // Convertir días a fechas reales
     const fechas = {
-        lunes: "2025-12-08",
-        martes: "2025-12-09",
-        miercoles: "2025-12-10",
-        jueves: "2025-12-11",
-        viernes: "2025-12-12",
-        sabado: "2025-12-13",
-        domingo: "2025-12-14"
+        lunes: "2025-12-15",
+        martes: "2025-12-16",
+        miercoles: "2025-12-17",
+        jueves: "2025-12-18",
+        viernes: "2025-12-19",
+        sabado: "2025-12-20",
+        domingo: "2025-12-21"
     };
 
     // Armar paquete final
@@ -144,4 +144,5 @@ function enviarFormulario() {
     .catch(err => alert("No se pudo conectar con el servidor."));
     
 }
+
 
